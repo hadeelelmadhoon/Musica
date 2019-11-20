@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MatToolbarModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,8 +29,7 @@ const routes: Routes = [
   { path: 'privacy', component: SecurityAndPrivacyComponent },
   { path: 'reviews', component: ViewReviewsComponent },
   { path: 'users', component: ViewUsersComponent },
-  { path: 'welcome', component: WelcomePageComponent },
-  { path: '', redirectTo: '/welcome', pathMatch: 'full'}
+  { path: '', component: WelcomePageComponent }
 ];
 
 @NgModule({
@@ -50,7 +50,9 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(routes),
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
