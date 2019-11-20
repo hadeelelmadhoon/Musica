@@ -3,6 +3,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 var cors = require('cors');
+var path = require('path');
+var passport = require('passport');
 
 const route = require('./routes/items.route'); // Imports routes for the users
 const app = express();
