@@ -35,7 +35,7 @@ exports.authenticate = function(req, res) {
                 throw err;
             }
             if (isMatch) {
-                const token = jwt.sign(user, 'secret', {
+                const token = jwt.sign(user.toJSON(), 'secret', {
                     expiresIn: 604800 // 1 week
                 });
 
