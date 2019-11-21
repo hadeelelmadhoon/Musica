@@ -9,7 +9,10 @@ const { check, validationResult } = require('express-validator');
 // Require the controllers
 const items_controller = require('../controllers/items.controller');
 
-router.post('/', items_controller.welcome);
+router.post('/', [
+    check('name').not().isEmpty().trim().escape().withMessage('Title must not be empty'),
+    check('type', 'Please pick item type').not().isEmpty()
+], items_controller.welcome);
 router.post('/authenticate', items_controller.authenticate);
 router.get('/charts', passport.authenticate('jwt', { session: false }), items_controller.viewMusicCharts);
 router.get('/validate', items_controller.validate);

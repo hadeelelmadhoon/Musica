@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MatToolbarModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
+import { FlashMessagesModule } from 'angular2-flash-messages'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +19,8 @@ import { ViewUsersComponent } from './components/view-users/view-users.component
 import { SecurityAndPrivacyComponent } from './components/security-and-privacy/security-and-privacy.component';
 import { NoticeAndTakedownComponent } from './components/notice-and-takedown/notice-and-takedown.component';
 import { ProcedureComponent } from './components/procedure/procedure.component';
+
+import { ValidateService } from './services/validate.service'
 
 const routes: Routes = [
   { path: 'addReview', component: AddReviewComponent },
@@ -52,9 +56,11 @@ const routes: Routes = [
     AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
-    MatToolbarModule
+    MatToolbarModule,
+    FormsModule,
+    FlashMessagesModule.forRoot()
   ],
-  providers: [],
+  providers: [ValidateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
