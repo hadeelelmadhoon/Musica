@@ -40,10 +40,9 @@ exports.authenticate = function(req, res) {
                 });
 
                 // return back customer user object without password
-
                 res.json({
                     success: true,
-                    token: 'JWT ' + token,
+                    token: 'Bearer ' + token,
                     user: {
                         id: user._id,
                         name: user.name,
@@ -59,7 +58,7 @@ exports.authenticate = function(req, res) {
 };
 
 exports.viewMusicCharts = function(req, res) {
-    res.send('chart');
+    res.json({ user: req.user });
 };
 
 exports.validate = function(req, res) {

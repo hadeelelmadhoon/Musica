@@ -11,7 +11,7 @@ const items_controller = require('../controllers/items.controller');
 
 router.post('/', items_controller.welcome);
 router.post('/authenticate', items_controller.authenticate);
-router.get('/charts', items_controller.viewMusicCharts);
+router.get('/charts', passport.authenticate('jwt', { session: false }), items_controller.viewMusicCharts);
 router.get('/validate', items_controller.validate);
 
 module.exports = router;

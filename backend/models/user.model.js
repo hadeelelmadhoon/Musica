@@ -13,7 +13,7 @@ let UserSchema = new Schema({
 // Export the model
 const User = module.exports = mongoose.model('User', UserSchema);
 
-module.exports.getUserById = function(username, callback) {
+module.exports.getUserById = function(id, callback) {
     User.findById(id, callback);
 }
 
