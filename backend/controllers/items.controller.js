@@ -1,4 +1,5 @@
 const User = require('../models/user.model');
+const Songs = require('../models/songs.model');
 const jwt = require('jsonwebtoken');
 
 exports.welcome = function(req, res) {
@@ -57,10 +58,23 @@ exports.authenticate = function(req, res) {
     })
 };
 
-exports.viewMusicCharts = function(req, res) {
-    res.json({ user: req.user });
-};
-
 exports.validate = function(req, res) {
     res.send('validate');
+};
+
+exports.viewMusicCharts = function(req, res) {
+    Songs.find((err, songs) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(songs);
+    });
+};
+
+exports.viewReviews = function(req, res) {
+
+};
+
+exports.addReview = function(req, res) {
+
 };

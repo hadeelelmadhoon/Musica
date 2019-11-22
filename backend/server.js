@@ -15,6 +15,7 @@ const mongoose = require('mongoose');
 let dev_db_url = 'mongodb+srv://someuser:abcd1234@productstutorial-wzj0e.mongodb.net/Lab5?retryWrites=true&w=majority';
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
+// var Grid = require('gridfs-stream');
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
