@@ -9,3 +9,10 @@ body {
     margin: 0;
     font-family: "Helvetica Neue", sans-serif;
 }
+
+.flash-message {
+    position: fixed;
+    top: 60px;
+    z-index: 1000;
+    width: 50%;
+}
