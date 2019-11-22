@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatToolbarModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages'
+import { HttpClientModule } from '@angular/common/http'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { NoticeAndTakedownComponent } from './components/notice-and-takedown/not
 import { ProcedureComponent } from './components/procedure/procedure.component';
 
 import { ValidateService } from './services/validate.service'
+import { AuthService } from './services/auth.service'
 
 const routes: Routes = [
   { path: 'addReview', component: AddReviewComponent },
@@ -58,9 +60,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     MatToolbarModule,
     FormsModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [ValidateService],
+  providers: [ValidateService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ValidateService } from '../../services/validate.service'
-import { FlashMessagesService } from 'angular2-flash-messages'
+import { ValidateService } from '../../services/validate.service';
+import { AuthService } from '../../services/auth.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcome-page',
@@ -13,7 +15,12 @@ export class WelcomePageComponent implements OnInit {
   email: String;
   password: String;
 
-  constructor(private validateService: ValidateService, private flashMessagesServices: FlashMessagesService) { }
+  constructor(
+    private validateService: ValidateService, 
+    private flashMessagesServices: FlashMessagesService,
+    private authService: AuthService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
   }
@@ -41,6 +48,19 @@ export class WelcomePageComponent implements OnInit {
       this.flashMessagesServices.show(errorStr, { cssClass: 'alert-danger', timeout: 5000 });
       return false;
     }
+
+    // Register User
+
+    this.authService.registerUser(user).subscribe(data => {
+      if(data){
+        this.flashMessagesServices.show('You are now registered and can login!', { cssClass: 'alert-success', timeout: 3000 });
+        this.router.navigate(['/login']);
+      }
+      else{
+        this.flashMessagesServices.show('Registration unsuccessful', { cssClass: 'alert-danger', timeout: 3000 });
+        this.router.navigate(['/']);
+      }
+    });
 
   }
 
