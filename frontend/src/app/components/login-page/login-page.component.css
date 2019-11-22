@@ -1,18 +1,27 @@
 body {
     background-image: linear-gradient(to right top, #010711, #131c3f, #131c3f, #252f5a, #3e3d81);
-    padding: 5%;
+    padding: 3%;
     color: white;
-    height: 800px;
+    height: 750px;
 }
 
 .loginForm {
     background-image: linear-gradient(to left top, #040a20, #0e173a, #252f5a, #303964, #ad16a1);
+    position: relative;
     margin: 0 33%;
     padding: 5%;
-    height: 500px;
+    height: 80%;
     border-radius: 3%;
+    position: relative;
+    top: 10%;
 }
 
 .shadow {
     box-shadow: 0 20px 25px 20px rgb(0, 0, 0)
+}
+
+.btn:hover {
+    background-color: #ad16a1;
+    color: white;
+    border-color: #ad16a1;
 }

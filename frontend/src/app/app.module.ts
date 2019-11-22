@@ -20,9 +20,10 @@ import { ViewUsersComponent } from './components/view-users/view-users.component
 import { SecurityAndPrivacyComponent } from './components/security-and-privacy/security-and-privacy.component';
 import { NoticeAndTakedownComponent } from './components/notice-and-takedown/notice-and-takedown.component';
 import { ProcedureComponent } from './components/procedure/procedure.component';
+import { NavbarComponent } from './components/navbar/navbar.component'
 
 import { ValidateService } from './services/validate.service'
-import { AuthService } from './services/auth.service'
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   { path: 'addReview', component: AddReviewComponent },
@@ -51,7 +52,8 @@ const routes: Routes = [
     ViewUsersComponent,
     SecurityAndPrivacyComponent,
     NoticeAndTakedownComponent,
-    ProcedureComponent
+    ProcedureComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
