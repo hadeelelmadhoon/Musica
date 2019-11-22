@@ -12,8 +12,17 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   registerUser(user){
-    // let headers = new Headers();
-    // headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:4000/', user);
+  }
+
+  authenticateUser(user){
+    return this.http.post('http://localhost:4000/authenticate', user);
+  }
+
+  storeUserData(token, user){
+    localStorage.setItem('id_token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = token;
+    this.user = user;
   }
 }

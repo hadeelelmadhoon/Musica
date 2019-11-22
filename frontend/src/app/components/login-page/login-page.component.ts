@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service'
+import { Router } from '@angular/router'
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-login-page',
@@ -6,10 +9,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
+  username: String;
+  password: String;
 
-  constructor() { }
+  constructor( 
+    private authService: AuthService,
+    private flashMessagesServices: FlashMessagesService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
   }
 
+  onLoginSubmit(){
+    const user = {
+      username: this.username,
+      password: this.password
+    }
+
+    this.authService.authenticateUser(user).subscribe(data => {
+      var json = JSON.parse(JSON.stringify(data));
+      if(json.success){
+        this.authService.storeUserData(json.token, json.user);
+        this.flashMessagesServices.show('Login successful', { cssClass: 'alert-success', timeout: 3000 });
+        this.router.navigate(['/charts']);
+      }
+      else{
+        this.flashMessagesServices.show(json.msg, { cssClass: 'alert-danger', timeout: 3000 });
+      }
+    });
+  }
 }

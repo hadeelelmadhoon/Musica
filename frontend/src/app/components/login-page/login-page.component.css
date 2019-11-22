@@ -1,0 +1,18 @@
+body {
+    background-image: linear-gradient(to right top, #010711, #131c3f, #131c3f, #252f5a, #3e3d81);
+    padding: 5%;
+    color: white;
+    height: 800px;
+}
+
+.loginForm {
+    background-image: linear-gradient(to left top, #040a20, #0e173a, #252f5a, #303964, #ad16a1);
+    margin: 0 33%;
+    padding: 5%;
+    height: 500px;
+    border-radius: 3%;
+}
+
+.shadow {
+    box-shadow: 0 20px 25px 20px rgb(0, 0, 0)
+}
