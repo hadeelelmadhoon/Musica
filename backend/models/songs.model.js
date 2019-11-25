@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 let SongsSchema = new Schema({
     title: { type: String, required: true },
     artist: { type: String, required: true },
-    views: { type: Number },
     rating: { type: Number }
 }, { collection: 'Songs' });
 

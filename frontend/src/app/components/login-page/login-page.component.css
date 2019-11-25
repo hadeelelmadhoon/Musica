@@ -25,3 +25,9 @@ body {
     color: white;
     border-color: #ad16a1;
 }
+
+.box {
+    background-color: rgba(0, 0, 0, 0.37);
+    border-color: rgba(0, 0, 0, 0);
+    color: white;
+}
