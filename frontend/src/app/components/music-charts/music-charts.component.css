@@ -1,11 +1,52 @@
-.title {
-    font-size: 30px;
-}
-
-table {
-    width: 100%;
-}
-
-.mat-column-right {
-    text-align: center;
-}
+    body {
+        background-image: linear-gradient(to right top, #010711, #131c3f, #131c3f, #252f5a, #3e3d81);
+        height: 100vh;
+        padding: 100px 0 0 5%;
+        color: #f7f7f7;
+    }
+    
+    h3 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+    }
+    
+    .back {
+        background-color: rgba(255, 255, 255, 0);
+    }
+    
+    .title {
+        font-size: 20px;
+    }
+    
+    .artist {
+        font-size: 15px;
+        color: rgb(192, 192, 192);
+    }
+    
+    .rating {
+        color: white;
+    }
+    
+    table {
+        width: 30%;
+        border: none;
+    }
+    
+    .mat-column-right {
+        text-align: center;
+    }
+    
+    td.mat-cell {
+        border: none;
+    }
+    
+    th.mat-header-cell {
+        margin-top: 0;
+        border: none;
+    }
+    
+     ::ng-deep .mat-card {
+        border: 55px !important;
+        border-radius: 30px !important;
+        border: rgba(0, 0, 0, 0) !important;
+    }

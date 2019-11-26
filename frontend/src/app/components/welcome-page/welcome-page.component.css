@@ -2,8 +2,8 @@ body {
     background-image: linear-gradient(to right top, #010711, #131c3f, #131c3f, #252f5a, #3e3d81);
     padding: 3%;
     padding-right: 7%;
-    color: white;
-    height: 750px;
+    color: #f7f7f7;
+    height: 100vh;
 }
 
 .loginForm {
@@ -20,12 +20,12 @@ body {
 
 .btn:hover {
     background-color: #ad16a1;
-    color: white;
+    color: #f7f7f7;
     border-color: #ad16a1;
 }
 
 .box {
     background-color: rgba(0, 0, 0, 0.37);
     border-color: rgba(0, 0, 0, 0);
-    color: white;
+    color: #f7f7f7;
 }

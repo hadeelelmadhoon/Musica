@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatTableDataSource } from '@angular/material';
 
 import { Songs } from '../../../../../backend/models/songs.model';
 import { SongsService } from '../../services/songs.service'
