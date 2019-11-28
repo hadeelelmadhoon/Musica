@@ -5,6 +5,8 @@ import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatOptionModule, 
 import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages'
 import { HttpClientModule } from '@angular/common/http'; 
+import {CdkTableModule} from '@angular/cdk/table';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -68,12 +70,14 @@ const routes: Routes = [
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
+    ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,
     MatTableModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    CdkTableModule
   ],
   providers: [ValidateService, AuthService],
   bootstrap: [AppComponent]

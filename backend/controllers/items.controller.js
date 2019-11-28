@@ -1,5 +1,6 @@
 const User = require('../models/user.model');
 const Songs = require('../models/songs.model');
+const Reviews = require('../models/reviews.model');
 const jwt = require('jsonwebtoken');
 
 exports.welcome = function(req, res) {
@@ -66,15 +67,55 @@ exports.viewMusicCharts = function(req, res) {
     Songs.find((err, songs) => {
         if (err)
             console.log(err);
-        else
-            res.json(songs);
+        else {
+            // for (var i = 0; i < songs.length; i++) {
+            //     // console.log(songs[i]._id)
+            //     // res.json(song._id);
+            //     Reviews.find({ songId: songs[i]._id }, (err, reviews) => {
+            //         if (err)
+            //             console.log(err);
+            //         else {
+            //             console.log(reviews)
+            //                 // Reviews.getReviewsBySongId(songs[0]._id);
+            //         }
+            //     });
+            // }
+
+            res.json(songs)
+                // Reviews.getReviewsBySongId(songs[0]._id);
+        }
     });
+    // Reviews.find((err, reviews) => {
+    //     if (err)
+    //         console.log(err);
+    //     else {
+    //         console.log(reviews)
+    //             // Reviews.getReviewsBySongId(songs[0]._id);
+    //     }
+    // });
 };
 
 exports.viewReviews = function(req, res) {
-
+    Reviews.find((err, reviews) => {
+        if (err)
+            console.log(err);
+        else {
+            res.json(reviews)
+        }
+    });
 };
 
 exports.addReview = function(req, res) {
-
+    let songReview = new Reviews({
+        review: req.body.review,
+        rating: req.body.rating
+    });
+    // save new item
+    songReview.save()
+        .then(issue => {
+            res.status(200).json({ 'songReview': 'Added successfully' });
+        })
+        .catch(err => {
+            res.status(400).send('Failed to create review');
+        });
 };

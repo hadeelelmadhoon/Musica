@@ -25,10 +25,12 @@
     
     .rating {
         color: white;
+        position: relative;
+        left: 200px;
     }
     
     table {
-        width: 30%;
+        /* width: 30%; */
         border: none;
     }
     

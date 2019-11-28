@@ -9,12 +9,16 @@ import { SongsService } from '../../services/songs.service'
   templateUrl: './music-charts.component.html',
   styleUrls: ['./music-charts.component.css']
 })
+
 export class MusicChartsComponent implements OnInit {
 
   songs: Songs[];
   displayedColumns = ['title', 'artist', 'rating'];
 
-  constructor(private songsService: SongsService, private router: Router) { }
+  constructor(
+    private songsService: SongsService, 
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.fetchSongs();
@@ -28,6 +32,10 @@ export class MusicChartsComponent implements OnInit {
         console.log('Data requested ...');
         console.log(this.songs);
       });
+  }
+
+  selectedRow(row){
+    console.log(row._id);
   }
 
 }

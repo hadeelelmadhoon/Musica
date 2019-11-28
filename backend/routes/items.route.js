@@ -19,6 +19,7 @@ router.post('/authenticate', items_controller.authenticate);
 router.get('/charts', items_controller.viewMusicCharts);
 router.get('/validate', items_controller.validate);
 router.get('/reviews', items_controller.viewReviews);
-router.post('/addReview', passport.authenticate('jwt', { session: false }), items_controller.addReview);
+//router.post('/addReview', passport.authenticate('jwt', { session: false }), items_controller.addReview);
+router.post('/addReview', items_controller.addReview);
 
 module.exports = router;

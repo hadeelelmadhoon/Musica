@@ -1,18 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Reviews = require('../models/reviews.model');
 
-// set product schema 
-let ReviewsSchema = new Schema({
-    username: { type: String },
-    subject: { type: String, required: true },
-    review: { type: String, required: true },
-    rating: { type: Number }
-})
 let SongsSchema = new Schema({
     title: { type: String, required: true },
     artist: { type: String, required: true },
-    rating: { type: Number },
-    reviews: { type: [ReviewsSchema] }
+    rating: { type: Number }
 }, { collection: 'Songs' });
 
 // Export the model
