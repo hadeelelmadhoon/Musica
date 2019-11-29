@@ -25,8 +25,8 @@
                 </mat-form-field>
                 <mat-divider></mat-divider>
                 <br><br>
-                <button mat-raised-button color="accent" routerLink="/reviews">Back</button>&nbsp;
-                <button type="submit" (click)="addReview(review.value, rating.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+                <button mat-raised-button color="accent" (click)="back()">Back</button>&nbsp;
+                <button type="submit" (click)="addReview(username.value, review.value, rating.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Add</button>
             </form>
         </mat-card>
     </div>

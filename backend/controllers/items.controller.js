@@ -86,6 +86,8 @@ exports.viewReviews = function(req, res) {
 
 exports.addReview = function(req, res) {
     let songReview = new Reviews({
+        songId: req.params.songId,
+        username: req.body.username,
         review: req.body.review,
         rating: req.body.rating
     });

@@ -20,7 +20,7 @@ router.get('/charts', items_controller.viewMusicCharts);
 router.get('/validate', items_controller.validate);
 router.get('/reviews/:songId', items_controller.viewReviews);
 //router.post('/addReview', passport.authenticate('jwt', { session: false }), items_controller.addReview);
-router.post('/addReview', items_controller.addReview);
+router.post('/reviews/add/:songId', items_controller.addReview);
 router.get('/users', items_controller.viewUsers); //add authentication
 router.get('/users/:id', items_controller.getUsersById); //add authentication
 router.post('/users/update/:id', items_controller.editUser); //add authentication

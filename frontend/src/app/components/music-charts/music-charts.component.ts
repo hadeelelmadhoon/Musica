@@ -37,12 +37,7 @@ export class MusicChartsComponent implements OnInit {
   }
 
   getReviews(songId){
-    // this.ViewReviewsComponent.fetchReviews(songId);
     this.router.navigate([`/reviews/${songId}`]);
-    // this.authService.getReviews(songId);
-    // this.reviewsService
-    //   .getReviews(songId)
-    // this.router.navigate(['http://localhost:4000/reviews'])
   }
 
   // fetchReviews(songId){

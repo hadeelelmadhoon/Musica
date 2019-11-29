@@ -29,7 +29,7 @@ import { AuthService } from './services/auth.service';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 const routes: Routes = [
-  { path: 'addReview', component: AddReviewComponent },
+  { path: 'reviews/add/:songId', component: AddReviewComponent },
   { path: 'addSong', component: AddSongComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'manager', component: ManagerHomePageComponent},

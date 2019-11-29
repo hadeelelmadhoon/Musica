@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
@@ -10,12 +10,15 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 export class AddReviewComponent implements OnInit {
 
+  id: String;
+
   createForm: FormGroup;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private route: ActivatedRoute
   ) { 
     this.createForm = this.fb.group({
       username: new FormControl({value: JSON.parse(localStorage.getItem('user')).username, disabled: true}),
@@ -24,16 +27,22 @@ export class AddReviewComponent implements OnInit {
     });
   }
 
-  addReview(review, rating) {
-    this.authService.addReview(review, rating).subscribe(() => {
-      this.router.navigate(['/reviews']);
+  addReview(username, review, rating) {
+    this.authService.addReview(this.id, username, review, rating).subscribe(() => {
+      this.router.navigate([`/reviews/add/${this.id}`]);
+      this.back();
     });
   }
 
+  back(){
+    this.router.navigate([`/reviews/${this.id}`]);
+  }
+
   ngOnInit() {
-    // this.authService.getAddReview().subscribe(review => {
-    //   this.router.navigate(['/reviews'])
-    // })
+    this.route.params.subscribe(params => {
+      this.id = params.songId;
+      console.log(this.id);
+    });
   }
 
 }

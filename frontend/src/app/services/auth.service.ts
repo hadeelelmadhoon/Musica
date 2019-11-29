@@ -67,12 +67,14 @@ export class AuthService {
     localStorage.clear();
   }
 
-  addReview(review, rating){
+  addReview(songId, username, review, rating){
     const songReview = {
+      songId: songId,
+      username: username,
       review: review,
       rating: rating
     };
-    return this.http.post('http://localhost:4000/addReview', songReview);
+    return this.http.post(`http://localhost:4000/reviews/add/${songId}`, songReview);
   }
 
   getReviews(songId){

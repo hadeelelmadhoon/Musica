@@ -33,5 +33,9 @@ export class ViewReviewsComponent implements OnInit {
       });
     });
   }
+
+  addReview(){
+    this.router.navigate([`/reviews/add/${this.songId}`]);
+  }
 }
 
