@@ -26,6 +26,7 @@ import { NavbarComponent } from './components/navbar/navbar.component'
 
 import { ValidateService } from './services/validate.service'
 import { AuthService } from './services/auth.service';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 const routes: Routes = [
   { path: 'addReview', component: AddReviewComponent },
@@ -36,8 +37,9 @@ const routes: Routes = [
   { path: 'notice', component: NoticeAndTakedownComponent},
   { path: 'procedure', component: ProcedureComponent },
   { path: 'privacy', component: SecurityAndPrivacyComponent },
-  { path: 'reviews', component: ViewReviewsComponent },
+  { path: 'reviews/:songId', component: ViewReviewsComponent },
   { path: 'users', component: ViewUsersComponent },
+  { path: 'editUser/:id', component: EditUserComponent },
   { path: '', component: WelcomePageComponent }
 ];
 
@@ -55,7 +57,8 @@ const routes: Routes = [
     SecurityAndPrivacyComponent,
     NoticeAndTakedownComponent,
     ProcedureComponent,
-    NavbarComponent
+    NavbarComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

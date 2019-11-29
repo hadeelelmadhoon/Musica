@@ -1,0 +1,37 @@
+<div>
+    <br>
+    <mat-card>
+        <section class="mat-typography">
+            <h3>Update Issue</h3>
+        </section>
+        <mat-divider></mat-divider>
+        <br>
+        <form [formGroup]="updateForm" class="edit-form">
+            <mat-form-field class="field-full-width">
+                <input placeholder="Name" matInput formControlName="name" #name>
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <input placeholder="Email" matInput formControlName="email" #email>
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <input placeholder="Username" matInput formControlName="username" #username>
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <mat-select placeholder="Status" formControlName="status" #status>
+                    <mat-option value="Active">Active</mat-option>
+                    <mat-option value="Deactivated">Deactivated</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="field-full-width">
+                <mat-select placeholder="Authority" formControlName="authority" #authority>
+                    <mat-option value="User">User</mat-option>
+                    <mat-option value="Manager">Manager</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-divider></mat-divider>
+            <br><br>
+            <button mat-raised-button color="accent" routerLink="/users">Back</button>&nbsp;
+            <button type="submit" (click)="updateUser(name.value, email.value, username.value, status.value, authority.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Save</button>
+        </form>
+    </mat-card>
+</div>

@@ -8,6 +8,8 @@ let UserSchema = new Schema({
     email: { type: String, required: true },
     username: { type: String, required: true },
     password: { type: String, required: true },
+    status: { type: String, default: "Active" },
+    authority: { type: String, default: "User" }
 }, { collection: 'Users' });
 
 // Export the model

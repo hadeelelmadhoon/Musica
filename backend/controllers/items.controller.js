@@ -68,38 +68,18 @@ exports.viewMusicCharts = function(req, res) {
         if (err)
             console.log(err);
         else {
-            // for (var i = 0; i < songs.length; i++) {
-            //     // console.log(songs[i]._id)
-            //     // res.json(song._id);
-            //     Reviews.find({ songId: songs[i]._id }, (err, reviews) => {
-            //         if (err)
-            //             console.log(err);
-            //         else {
-            //             console.log(reviews)
-            //                 // Reviews.getReviewsBySongId(songs[0]._id);
-            //         }
-            //     });
-            // }
-
             res.json(songs)
-                // Reviews.getReviewsBySongId(songs[0]._id);
         }
     });
-    // Reviews.find((err, reviews) => {
-    //     if (err)
-    //         console.log(err);
-    //     else {
-    //         console.log(reviews)
-    //             // Reviews.getReviewsBySongId(songs[0]._id);
-    //     }
-    // });
 };
 
 exports.viewReviews = function(req, res) {
-    Reviews.find((err, reviews) => {
+    console.log(req.params)
+    Reviews.find({ songId: req.params.songId }, (err, reviews) => {
         if (err)
             console.log(err);
         else {
+            console.log(reviews)
             res.json(reviews)
         }
     });
@@ -119,3 +99,43 @@ exports.addReview = function(req, res) {
             res.status(400).send('Failed to create review');
         });
 };
+
+exports.viewUsers = function(req, res) {
+    User.find((err, user) => {
+        if (err)
+            console.log(err);
+        else {
+            res.json(user)
+        }
+    });
+};
+
+exports.getUsersById = function(req, res) {
+    console.log(req.params.id)
+    User.findById(req.params.id, (err, user) => {
+        if (err)
+            console.log("nope");
+        else
+            res.json(user);
+    })
+};
+
+exports.editUser = function(req, res) {
+    User.findById(req.params.id, (err, user) => {
+        if (!user)
+            return next(new Error('Could not load user'));
+        else {
+            user.name = req.body.name;
+            user.email = req.body.email;
+            user.username = req.body.username;
+            user.status = req.body.status;
+            user.authority = req.body.authority;
+
+            user.save().then(user => {
+                res.json('Update done');
+            }).catch(err => {
+                res.status(400).send('Update failed');
+            });
+        }
+    });
+}

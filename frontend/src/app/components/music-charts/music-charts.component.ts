@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { Songs } from '../../../../../backend/models/songs.model';
 import { SongsService } from '../../services/songs.service'
+import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-music-charts',
@@ -17,7 +18,8 @@ export class MusicChartsComponent implements OnInit {
 
   constructor(
     private songsService: SongsService, 
-    private router: Router
+    private router: Router,
+    private authService: AuthService
     ) { }
 
   ngOnInit() {
@@ -34,8 +36,26 @@ export class MusicChartsComponent implements OnInit {
       });
   }
 
-  selectedRow(row){
-    console.log(row._id);
+  // selectedSong(column){
+  //   console.log(column._id);
+  //   this.router.navigate(['http://localhost:4000/reviews?songId='+column._id])
+  // }
+
+  fetchReviews(songId){
+    this.router.navigate([`/reviews/${songId}`]);
+    // this.reviewsService
+    //   .getReviews(songId)
+    // this.router.navigate(['http://localhost:4000/reviews'])
   }
+
+  // fetchReviews(songId){
+  //   this.authService
+  //     .getReviews(songId)
+  //     .subscribe((reviews: Reviews[]) => {
+  //       this.reviews = reviews;
+  //       console.log('Data requested ...');
+  //       console.log(this.reviews);
+  //     });
+  // }
 
 }

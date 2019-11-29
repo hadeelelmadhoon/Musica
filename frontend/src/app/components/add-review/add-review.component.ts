@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ReviewsService } from '../../services/reviews.service';
 
 @Component({
   selector: 'app-add-review',
@@ -16,7 +15,6 @@ export class AddReviewComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private reviewsService: ReviewsService,
     private fb: FormBuilder
   ) { 
     this.createForm = this.fb.group({
@@ -26,7 +24,7 @@ export class AddReviewComponent implements OnInit {
   }
 
   addReview(review, rating) {
-    this.reviewsService.addReview(review, rating).subscribe(() => {
+    this.authService.addReview(review, rating).subscribe(() => {
       this.router.navigate(['/reviews']);
     });
   }

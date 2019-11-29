@@ -18,8 +18,12 @@ router.post('/', items_controller.welcome);
 router.post('/authenticate', items_controller.authenticate);
 router.get('/charts', items_controller.viewMusicCharts);
 router.get('/validate', items_controller.validate);
-router.get('/reviews', items_controller.viewReviews);
+router.get('/reviews/:songId', items_controller.viewReviews);
 //router.post('/addReview', passport.authenticate('jwt', { session: false }), items_controller.addReview);
 router.post('/addReview', items_controller.addReview);
+router.get('/users', items_controller.viewUsers); //add authentication
+router.get('/users/:id', items_controller.getUsersById); //add authentication
+router.post('/users/update/:id', items_controller.editUser); //add authentication
+
 
 module.exports = router;
