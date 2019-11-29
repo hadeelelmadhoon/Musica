@@ -74,7 +74,6 @@ exports.viewMusicCharts = function(req, res) {
 };
 
 exports.viewReviews = function(req, res) {
-    console.log(req.params)
     Reviews.find({ songId: req.params.songId }, (err, reviews) => {
         if (err)
             console.log(err);

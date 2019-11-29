@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Reviews } from '../../../../../backend/models/reviews.model';
 import { AuthService } from '../../services/auth.service'
@@ -11,25 +11,27 @@ import { AuthService } from '../../services/auth.service'
 })
 export class ViewReviewsComponent implements OnInit {
 
+  songId: String;
   reviews: Reviews[];
-  displayedColumns = ['review', 'rating'];
+  displayedColumns = ['username', 'review', 'rating'];
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private route: ActivatedRoute
     ) { }
 
   ngOnInit() {
-  }
-
-  fetchReviews(songId){
-    this.authService
-      .getReviews(songId)
+    this.route.params.subscribe(params => {
+      this.songId = params.songId;
+      this.authService
+      .getReviews(this.songId)
       .subscribe((reviews: Reviews[]) => {
-        this.reviews = reviews;
+        this.reviews = reviews; 
         console.log('Data requested ...');
         console.log(this.reviews);
       });
+    });
   }
-
 }
+

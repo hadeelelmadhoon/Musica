@@ -9,6 +9,9 @@
             <br>
             <form [formGroup]="createForm" class="create-form">
                 <mat-form-field class="field-full-width">
+                    <input placeholder="Username" matInput formControlName="username" #username>
+                </mat-form-field>
+                <mat-form-field class="field-full-width">
                     <input matInput placeholder="Review" formControlName="review" #review>
                 </mat-form-field>
                 <mat-form-field>

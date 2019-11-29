@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-review',
@@ -18,6 +18,7 @@ export class AddReviewComponent implements OnInit {
     private fb: FormBuilder
   ) { 
     this.createForm = this.fb.group({
+      username: new FormControl({value: JSON.parse(localStorage.getItem('user')).username, disabled: true}),
       review: '',
       rating: ''
     });
