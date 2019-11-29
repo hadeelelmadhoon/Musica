@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Songs } from '../../../../../backend/models/songs.model';
 import { SongsService } from '../../services/songs.service'
 import { AuthService } from '../../services/auth.service'
+import { ViewReviewsComponent } from '../../components/view-reviews/view-reviews.component'
 
 @Component({
   selector: 'app-music-charts',
@@ -21,6 +22,8 @@ export class MusicChartsComponent implements OnInit {
     private router: Router,
     private authService: AuthService
     ) { }
+
+    ViewReviewsComponent = new ViewReviewsComponent(this.router, this.authService);
 
   ngOnInit() {
     this.fetchSongs();
@@ -41,8 +44,10 @@ export class MusicChartsComponent implements OnInit {
   //   this.router.navigate(['http://localhost:4000/reviews?songId='+column._id])
   // }
 
-  fetchReviews(songId){
-    this.router.navigate([`/reviews/${songId}`]);
+  getReviews(songId){
+    this.ViewReviewsComponent.fetchReviews(songId);
+    // this.router.navigate([`/reviews/${songId}`]);
+    // this.authService.getReviews(songId);
     // this.reviewsService
     //   .getReviews(songId)
     // this.router.navigate(['http://localhost:4000/reviews'])

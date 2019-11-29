@@ -17,7 +17,7 @@
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element" class="rating"> {{element.rating}}
                     <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
-                        <a class="view-reviews" (click)="fetchReviews(element._id)">See all</a>
+                        <a class="view-reviews" (click)="getReviews(element._id)">See all</a>
                     </li>
                 </td>
 

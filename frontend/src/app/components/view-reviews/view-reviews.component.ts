@@ -22,14 +22,14 @@ export class ViewReviewsComponent implements OnInit {
   ngOnInit() {
   }
 
-  // fetchReviews(songId){
-  //   this.authService
-  //     .getReviews(songId)
-  //     .subscribe((reviews: Reviews[]) => {
-  //       this.reviews = reviews;
-  //       console.log('Data requested ...');
-  //       console.log(this.reviews);
-  //     });
-  // }
+  fetchReviews(songId){
+    this.authService
+      .getReviews(songId)
+      .subscribe((reviews: Reviews[]) => {
+        this.reviews = reviews;
+        console.log('Data requested ...');
+        console.log(this.reviews);
+      });
+  }
 
 }
