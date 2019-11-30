@@ -24,12 +24,8 @@ router.post('/authenticate', [
 router.get('/charts', items_controller.viewMusicCharts);
 
 router.post('/charts/add', [
-    check('title').not().isEmpty().trim().escape(),
-    check('artist').not().isEmpty().trim().escape(),
-    check('album').trim().escape(),
     check('track').trim().escape(),
-    check('year').trim().escape(),
-    check('genre').trim().escape()
+    check('year').trim().escape()
 ], items_controller.addSong);
 
 router.get('/validate', items_controller.validate);
