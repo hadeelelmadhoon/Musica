@@ -1,8 +1,9 @@
 <body>
     <div>
         <br>
+        <h3>All Reviews</h3>
         <mat-card>
-            <button mat-raised-button color="primary" (click)="addReview()">Add Review</button>
+            <button *ngIf="authService.loggedIn()" mat-raised-button color="primary" (click)="addReview()">Add Review</button>
             <br><br>
             <mat-divider></mat-divider>
             <br>
