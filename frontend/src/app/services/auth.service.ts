@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-//import { HttpClient } from '@angular/common/http';
-//import 'rxjs/add/operator/map';
+import { Http, Headers } from'@angular/http';
+// import { BehaviorSubject, Observable } from 'rxjs';
+// import { map } from 'rxjs/operators';
+import { tokenNotExpired } from 'angular2-jwt'
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,6 @@ export class AuthService {
   user: any;
   constructor(
     private http: HttpClient,
-    //private headers: HttpHeaders
     ) { }
 
   registerUser(user){
@@ -43,10 +44,16 @@ export class AuthService {
 
   // getAddReview(){
   //   this.loadToken();
-  //   const headers = new HttpHeaders();
-  //   headers.append('Authorization', 'this.authToken');
-  //   headers.append('Content-Type',  'application/json');
-  //   return this.http.get('http://localhost:4000/addReview', { headers });
+  //   // const headers = new HttpHeaders();
+  //   // headers.append('Authorization', 'this.authToken');
+  //   // headers.append('Content-Type',  'application/json');
+  //   const headers = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type':  'application/json',
+  //       'Authorization': this.authToken
+  //     })
+  //   };
+  //   return this.http.get('http://localhost:4000/reviews/add/:songId', headers);
   // }
 
   storeUserData(token, user){
@@ -56,10 +63,10 @@ export class AuthService {
     this.user = user;
   }
 
-  // loadToken(){
-  //   const token = localStorage.getItem('id_token');
-  //   this.authToken = token;
-  // }
+  loadToken(){
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
+  }
 
   logout(){
     this.authToken = null;
@@ -68,18 +75,29 @@ export class AuthService {
   }
 
   addReview(songId, username, review, rating){
+    this.loadToken();
     const songReview = {
       songId: songId,
       username: username,
       review: review,
       rating: rating
     };
-    return this.http.post(`http://localhost:4000/reviews/add/${songId}`, songReview);
+    const headers = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': this.authToken
+      })
+    };
+    return this.http.post(`http://localhost:4000/reviews/add/${songId}`, songReview, headers);
   }
 
   getReviews(songId){
     // console.log("enter")
     // console.log('http://localhost:4000/reviews'+'?songId='+songId)
     return this.http.get(`http://localhost:4000/reviews/${songId}`);
+  }
+
+  loggedIn(){
+    return tokenNotExpired('id_token');
   }
 }

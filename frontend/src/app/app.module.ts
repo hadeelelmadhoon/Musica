@@ -7,6 +7,8 @@ import { FlashMessagesModule } from 'angular2-flash-messages'
 import { HttpClientModule } from '@angular/common/http'; 
 import {CdkTableModule} from '@angular/cdk/table';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSortModule, MatSortHeader } from '@angular/material/sort';
+import { Observable } from 'rxjs/Observable';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -80,7 +82,8 @@ const routes: Routes = [
     MatTableModule,
     MatDividerModule,
     MatSnackBarModule,
-    CdkTableModule
+    CdkTableModule,
+    MatSortModule
   ],
   providers: [ValidateService, AuthService],
   bootstrap: [AppComponent]

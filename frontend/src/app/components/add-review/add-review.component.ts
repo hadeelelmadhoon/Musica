@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-add-review',
@@ -18,8 +19,15 @@ export class AddReviewComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private fb: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private flashMessagesServices: FlashMessagesService,
   ) { 
+    console.log(this.authService.loggedIn())
+    if(!this.authService.loggedIn()){
+      console.log('not registered');
+      this.router.navigate([`/`]);
+      this.flashMessagesServices.show('You must be registered', { cssClass: 'alert-danger', timeout: 3000 });
+    }
     this.createForm = this.fb.group({
       username: new FormControl({value: JSON.parse(localStorage.getItem('user')).username, disabled: true}),
       review: '',
