@@ -5,7 +5,11 @@ const Reviews = require('../models/reviews.model');
 let SongsSchema = new Schema({
     title: { type: String, required: true },
     artist: { type: String, required: true },
-    rating: { type: Number }
+    album: { type: String },
+    track: { type: Number },
+    year: { type: Number },
+    genre: { type: String }
+    // rating: { type: Number }
 }, { collection: 'Songs' });
 
 // Export the model

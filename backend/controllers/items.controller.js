@@ -69,7 +69,7 @@ exports.viewMusicCharts = function(req, res, next) {
     Songs.find({}, null, {
         limit: 10,
         sort: {
-            rating: -1
+            year: -1
         }
     }, (err, songs) => {
         if (err)

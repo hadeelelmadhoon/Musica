@@ -14,6 +14,8 @@ import { Reviews } from '../../../../../backend/models/reviews.model';
 
 export class MusicChartsComponent implements OnInit {
 
+  avgRating;
+  ratings: Reviews[];
   reviews: Reviews[];
   songs: Songs[];
   displayedColumns = ['title', 'artist', 'rating'];
@@ -33,8 +35,8 @@ export class MusicChartsComponent implements OnInit {
       .getSongs()
       .subscribe((data: Songs[]) => {
         this.songs = data;
-        console.log('Data requested ...');
-        console.log(this.songs);
+        // console.log('Data requested ...');
+        // console.log(this.songs);
       });
   }
 
@@ -46,9 +48,26 @@ export class MusicChartsComponent implements OnInit {
     this.authService.getRecentReview(songId)
     .subscribe((data: Reviews[]) => {
       this.reviews = data;
-      console.log('Data requested ...');
-      console.log(this.reviews);
+      // console.log('Data requested ...');
+      // console.log(this.reviews);
     });
+  }
+
+  fetchRatings(songId){
+    this.authService.getReviews(songId)
+    .subscribe((data: Reviews[]) => {
+      this.ratings = data;
+      console.log('Ratings requested ...');
+      console.log(this.ratings);
+    });
+  }
+
+  calculateRating(ratings){
+    var sum = 0;
+    for(let i = 0; i<ratings.length; i++){
+      sum+=ratings[i].rating;
+    }
+    this.avgRating = (ratings.length > 0) ? sum/ratings.length : "No ratings available";
   }
 
   // fetchReviews(songId){

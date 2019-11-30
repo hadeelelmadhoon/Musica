@@ -4,7 +4,7 @@
         <h3>Top Songs</h3>
 
         <mat-accordion *ngFor="let song of songs; let i = index">
-            <mat-expansion-panel (opened)="fetchRecentReview(song._id)">
+            <mat-expansion-panel (opened)="fetchRecentReview(song._id); fetchRatings(song._id)">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         {{i + 1}}
@@ -14,15 +14,24 @@
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <p>By {{ song.artist }}</p>
+                <p>From: {{ song.album }}</p>
+                <p>Year: {{ song.year }}</p>
+                <p>Genre: {{ song.genre }}</p>
                 <ul>
+                    <li *ngFor="let rating of ratings">
+                        {{ calculateRating(ratings) }}
+                    </li>
+                    <li>
+                        <p>Average rating: {{ avgRating }}</p>
+                    </li>
                     <li *ngFor="let review of reviews">
                         <h6>Most recent review: </h6>
                         <p>{{ review.username }}</p>
                         <p>{{ review.rating}}/5</p>
                         <p>{{ review.review }}</p>
-                        <button class="view-reviews" (click)="getReviews(review.songId)">See all reviews</button>
                     </li>
                 </ul>
+                <button class="view-reviews" (click)="getReviews(song._id)">See all reviews</button>
             </mat-expansion-panel>
         </mat-accordion>
 
