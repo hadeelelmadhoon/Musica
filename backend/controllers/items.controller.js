@@ -66,7 +66,7 @@ exports.validate = function(req, res) {
 };
 
 exports.viewMusicCharts = function(req, res, next) {
-    Songs.find({}, null, {
+    Songs.find({ hidden: false }, null, {
         limit: 10,
         sort: {
             year: -1
