@@ -65,8 +65,13 @@ exports.validate = function(req, res) {
     res.send('validate');
 };
 
-exports.viewMusicCharts = function(req, res) {
-    Songs.find((err, songs) => {
+exports.viewMusicCharts = function(req, res, next) {
+    Songs.find({}, null, {
+        limit: 10,
+        sort: {
+            rating: -1
+        }
+    }, (err, songs) => {
         if (err)
             console.log(err);
         else {
