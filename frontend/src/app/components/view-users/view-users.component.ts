@@ -22,6 +22,13 @@ export class ViewUsersComponent implements OnInit {
   }
 
   fetchUsers() {
+    if(!this.authService.loggedIn()){
+      this.router.navigate([`/login`]);
+    } 
+    else if(!this.authService.isManager()){
+      this.router.navigate([`/charts`]);
+    }
+    else{
     this.authService
       .getUsers()
       .subscribe((users: Users[]) => {
@@ -29,6 +36,7 @@ export class ViewUsersComponent implements OnInit {
         console.log('Data requested ...');
         console.log(this.users);
       });
+    }
   }
 
   editUser(id) {
