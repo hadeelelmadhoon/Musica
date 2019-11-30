@@ -31,8 +31,13 @@ export class LoginPageComponent implements OnInit {
       var json = JSON.parse(JSON.stringify(data));
       if(json.success){
         this.authService.storeUserData(json.token, json.user);
-        this.flashMessagesServices.show('Login successful', { cssClass: 'alert-success', timeout: 3000 });
-        this.router.navigate(['/charts']);
+        if(this.authService.isActive()){
+          this.flashMessagesServices.show('Login successful', { cssClass: 'alert-success', timeout: 3000 });
+          this.router.navigate(['/charts']);
+        }
+        else{
+          this.flashMessagesServices.show('Account deactivated, contact site manager', { cssClass: 'alert-danger', timeout: 3000 });
+        }
       }
       else{
         this.flashMessagesServices.show(json.msg, { cssClass: 'alert-danger', timeout: 3000 });

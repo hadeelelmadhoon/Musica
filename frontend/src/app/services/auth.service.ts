@@ -100,4 +100,14 @@ export class AuthService {
   loggedIn(){
     return tokenNotExpired('id_token');
   }
+
+  isManager(){
+    let authority = JSON.parse(localStorage.getItem('user')).authority;
+    return(authority == 'Manager');
+  }
+
+  isActive(){
+    let status = JSON.parse(localStorage.getItem('user')).status;
+    return(status == 'Active');
+  }
 }
