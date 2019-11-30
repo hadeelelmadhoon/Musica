@@ -1,1 +1,36 @@
-<p>add-song works!</p>
+<body>
+    <div>
+        <br>
+        <mat-card>
+            <section class="mat-typography">
+                <h3>Add Song</h3>
+            </section>
+            <mat-divider></mat-divider>
+            <br>
+            <form [formGroup]="createForm" class="create-form">
+                <mat-form-field class="field-full-width">
+                    <input placeholder="Title" matInput formControlName="title" #title>
+                </mat-form-field>
+                <mat-form-field class="field-full-width">
+                    <input matInput placeholder="Artist" formControlName="artist" #artist>
+                </mat-form-field>
+                <mat-form-field class="field-full-width">
+                    <input matInput placeholder="Album" formControlName="album" #album>
+                </mat-form-field>
+                <mat-form-field class="field-full-width">
+                    <input matInput placeholder="Track" formControlName="track" #track>
+                </mat-form-field>
+                <mat-form-field class="field-full-width">
+                    <input matInput placeholder="Year" formControlName="year" #year>
+                </mat-form-field>
+                <mat-form-field class="field-full-width">
+                    <input matInput placeholder="Genre" formControlName="genre" #genre>
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <br><br>
+                <button mat-raised-button color="accent" (click)="back()">Back</button>&nbsp;
+                <button type="submit" (click)="addSong(title.value, artist.value, album.value, track.value, year.value, genre.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Add</button>
+            </form>
+        </mat-card>
+    </div>
+</body>

@@ -95,7 +95,19 @@ export class AuthService {
   getSongs(){
     return this.http.get(environment.url + '/charts');
   }
-  
+
+  addSong(title, artist, album, track, year, genre){
+    const song = {
+      title: title,
+      artist: artist, 
+      album: album, 
+      track: track, 
+      year: year, 
+      genre: genre
+    };
+    return this.http.post(environment.url + '/charts/add', song);
+  }
+
   getReviews(songId){
     // console.log("enter")
     // console.log('http://localhost:4000/reviews'+'?songId='+songId)

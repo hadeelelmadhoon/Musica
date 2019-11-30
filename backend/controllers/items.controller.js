@@ -80,6 +80,25 @@ exports.viewMusicCharts = function(req, res, next) {
     });
 };
 
+exports.addSong = function(req, res) {
+    let song = new Songs({
+        title: req.body.title,
+        artist: req.body.artist,
+        album: req.body.album,
+        track: req.body.track,
+        year: req.body.year,
+        genre: req.body.genre
+    });
+    // save new song
+    song.save()
+        .then(song => {
+            res.status(200).json({ 'song': 'Added successfully' });
+        })
+        .catch(err => {
+            res.status(400).send('Failed to add song');
+        });
+};
+
 exports.viewReviews = function(req, res) {
     Reviews.find({ songId: req.params.songId }, (err, reviews) => {
         if (err)

@@ -30,8 +30,8 @@ export class AddReviewComponent implements OnInit {
     }
     this.createForm = this.fb.group({
       username: new FormControl({value: JSON.parse(localStorage.getItem('user')).username, disabled: true}),
-      review: '',
-      rating: ''
+      review: ['', Validators.required],
+      rating: ['', Validators.required]
     });
   }
 

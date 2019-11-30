@@ -68,7 +68,7 @@ export class MusicChartsComponent implements OnInit {
     this.avgRating = (ratings.length > 0) ? sum/ratings.length : "No ratings available";
   }
 
-  AddSong(){
+  addSong(){
     this.router.navigate(['/charts/add']);
   }
 

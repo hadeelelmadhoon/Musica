@@ -32,7 +32,7 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 const routes: Routes = [
   { path: 'reviews/add/:songId', component: AddReviewComponent },
-  { path: 'addSong', component: AddSongComponent },
+  { path: 'charts/add', component: AddSongComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'manager', component: ManagerHomePageComponent},
   { path: 'charts', component: MusicChartsComponent},

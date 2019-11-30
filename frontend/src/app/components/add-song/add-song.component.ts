@@ -36,6 +36,18 @@ export class AddSongComponent implements OnInit {
     });
    }
 
+   addSong(title, artist, album, track, year, genre) {
+    console.log(title);
+    this.authService.addSong(title, artist, album, track, year, genre).subscribe(() => {
+      this.router.navigate(['/charts/add']);
+      this.back();
+    });
+  }
+
+  back(){
+    this.router.navigate(['/charts']);
+  }
+
   ngOnInit() {
   }
 
