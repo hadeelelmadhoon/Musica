@@ -91,12 +91,30 @@ exports.viewReviews = function(req, res) {
     });
 };
 
+exports.viewTopReview = function(req, res) {
+    Reviews.find({ songId: req.params.songId }, null, {
+        limit: 1,
+        sort: {
+            date: -1
+        }
+    }, (err, reviews) => {
+        if (err)
+            console.log(err);
+        else {
+            console.log(reviews)
+            res.json(reviews)
+        }
+    });
+};
+
 exports.addReview = function(req, res) {
+    var currentTime = new Date();
     let songReview = new Reviews({
         songId: req.params.songId,
         username: req.body.username,
         review: req.body.review,
-        rating: req.body.rating
+        rating: req.body.rating,
+        date: currentTime
     });
     // save new item
     songReview.save()

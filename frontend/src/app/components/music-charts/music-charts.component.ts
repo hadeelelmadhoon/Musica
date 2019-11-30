@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Songs } from '../../../../../backend/models/songs.model';
 import { SongsService } from '../../services/songs.service'
 import { AuthService } from '../../services/auth.service'
+import { Reviews } from '../../../../../backend/models/reviews.model';
 
 @Component({
   selector: 'app-music-charts',
@@ -13,6 +14,7 @@ import { AuthService } from '../../services/auth.service'
 
 export class MusicChartsComponent implements OnInit {
 
+  reviews: Reviews[];
   songs: Songs[];
   displayedColumns = ['title', 'artist', 'rating'];
 
@@ -38,6 +40,15 @@ export class MusicChartsComponent implements OnInit {
 
   getReviews(songId){
     this.router.navigate([`/reviews/${songId}`]);
+  }
+
+  fetchRecentReview(songId){
+    this.authService.getRecentReview(songId)
+    .subscribe((data: Reviews[]) => {
+      this.reviews = data;
+      console.log('Data requested ...');
+      console.log(this.reviews);
+    });
   }
 
   // fetchReviews(songId){

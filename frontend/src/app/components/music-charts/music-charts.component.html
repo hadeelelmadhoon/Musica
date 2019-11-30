@@ -2,7 +2,32 @@
     <div>
         <br>
         <h3>Top Songs</h3>
-        <table mat-table [dataSource]="songs" class="back">
+
+        <mat-accordion *ngFor="let song of songs; let i = index">
+            <mat-expansion-panel (opened)="fetchRecentReview(song._id)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{i + 1}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <b>{{ song.title }}</b>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>By {{ song.artist }}</p>
+                <ul>
+                    <li *ngFor="let review of reviews">
+                        <h6>Most recent review: </h6>
+                        <p>{{ review.username }}</p>
+                        <p>{{ review.rating}}/5</p>
+                        <p>{{ review.review }}</p>
+                        <button class="view-reviews" (click)="getReviews(review.songId)">See all reviews</button>
+                    </li>
+                </ul>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+
+        <!-- <table mat-table [dataSource]="songs" class="back">
             <ng-container matColumnDef="title">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td *matCellDef="let element"> <span class="title">{{element.title}}</span><br><span class="artist">{{element.artist}}</span> </td>
@@ -17,16 +42,16 @@
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let element" class="rating"> {{element.rating}}
                     <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
-                        <!-- <i class="fas fa-angle-right expand"></i> -->
-                        <a class="view-reviews" (click)="getReviews(element._id)">See all</a>
-                    </li>
-                </td>
+                         <i class="fas fa-angle-right expand"></i> 
+        <a class="view-reviews" (click)="getReviews(element._id)">See all</a>
+        </li>
+        </td>
 
-            </ng-container>
+        </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-        </table>
+        </table> -->
     </div>
 </body>

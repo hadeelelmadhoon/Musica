@@ -19,6 +19,7 @@ router.post('/authenticate', items_controller.authenticate);
 router.get('/charts', items_controller.viewMusicCharts);
 router.get('/validate', items_controller.validate);
 router.get('/reviews/:songId', items_controller.viewReviews);
+router.get('/reviews/recent/:songId', items_controller.viewTopReview);
 //router.post('/addReview', passport.authenticate('jwt', { session: false }), items_controller.addReview);
 router.post('/reviews/add/:songId', passport.authenticate('jwt', { session: false }), items_controller.addReview);
 router.get('/users', items_controller.viewUsers); //add authentication

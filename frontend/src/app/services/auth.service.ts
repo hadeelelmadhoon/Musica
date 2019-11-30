@@ -4,6 +4,7 @@ import { Http, Headers } from'@angular/http';
 // import { BehaviorSubject, Observable } from 'rxjs';
 // import { map } from 'rxjs/operators';
 import { tokenNotExpired } from 'angular2-jwt'
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,19 +17,19 @@ export class AuthService {
     ) { }
 
   registerUser(user){
-    return this.http.post('http://localhost:4000/', user);
+    return this.http.post(environment.url, user);
   }
 
   authenticateUser(user){
-    return this.http.post('http://localhost:4000/authenticate', user);
+    return this.http.post(environment.url + '/authenticate', user);
   }
 
   getUsers(){
-    return this.http.get('http://localhost:4000/users');
+    return this.http.get(environment.url + '/users');
   }
 
   getUsersById(id) {
-    return this.http.get(`http://localhost:4000/users/${id}`);
+    return this.http.get(environment.url + `/users/${id}`);
   }
 
   editUser(id, name, email, username, status, authority) {
@@ -39,7 +40,7 @@ export class AuthService {
       status: status,
       authority: authority
     };
-    return this.http.post(`http://localhost:4000/users/update/${id}`, user);
+    return this.http.post(environment.url + `/users/update/${id}`, user);
   }
 
   // getAddReview(){
@@ -88,13 +89,19 @@ export class AuthService {
         'Authorization': this.authToken
       })
     };
-    return this.http.post(`http://localhost:4000/reviews/add/${songId}`, songReview, headers);
+    return this.http.post(environment.url + `/reviews/add/${songId}`, songReview, headers);
   }
 
   getReviews(songId){
     // console.log("enter")
     // console.log('http://localhost:4000/reviews'+'?songId='+songId)
-    return this.http.get(`http://localhost:4000/reviews/${songId}`);
+    return this.http.get(environment.url + `/reviews/${songId}`);
+  }
+
+  getRecentReview(songId){
+    // console.log("enter")
+    // console.log('http://localhost:4000/reviews'+'?songId='+songId)
+    return this.http.get(environment.url + `/reviews/recent/${songId}`);
   }
 
   loggedIn(){
