@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {CdkTableModule} from '@angular/cdk/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -82,7 +83,8 @@ const routes: Routes = [
     MatDividerModule,
     MatSnackBarModule,
     CdkTableModule,
-    MatExpansionModule
+    MatExpansionModule,
+    Ng2SearchPipeModule
   ],
   providers: [ValidateService, AuthService],
   bootstrap: [AppComponent]

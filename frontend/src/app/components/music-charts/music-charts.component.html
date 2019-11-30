@@ -2,8 +2,8 @@
     <div>
         <br>
         <h3>Top Songs</h3>
-
-        <mat-accordion *ngFor="let song of songs; let i = index">
+        <input type="text" [(ngModel)]="searchBox">
+        <mat-accordion *ngFor="let song of songs | filter:searchBox; let i = index">
             <mat-expansion-panel (opened)="fetchRecentReview(song._id); fetchRatings(song._id)">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
