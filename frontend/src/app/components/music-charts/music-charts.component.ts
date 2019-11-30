@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Songs } from '../../../../../backend/models/songs.model';
-import { SongsService } from '../../services/songs.service'
 import { AuthService } from '../../services/auth.service'
 import { Reviews } from '../../../../../backend/models/reviews.model';
 
@@ -21,7 +20,6 @@ export class MusicChartsComponent implements OnInit {
   displayedColumns = ['title', 'artist', 'rating'];
 
   constructor(
-    private songsService: SongsService, 
     private router: Router,
     private authService: AuthService
     ) { }
@@ -31,7 +29,7 @@ export class MusicChartsComponent implements OnInit {
   }
 
   fetchSongs() {
-    this.songsService
+    this.authService
       .getSongs()
       .subscribe((data: Songs[]) => {
         this.songs = data;
@@ -68,6 +66,10 @@ export class MusicChartsComponent implements OnInit {
       sum+=ratings[i].rating;
     }
     this.avgRating = (ratings.length > 0) ? sum/ratings.length : "No ratings available";
+  }
+
+  AddSong(){
+    this.router.navigate(['/charts/add']);
   }
 
   // fetchReviews(songId){

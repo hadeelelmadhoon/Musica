@@ -92,6 +92,10 @@ export class AuthService {
     return this.http.post(environment.url + `/reviews/add/${songId}`, songReview, headers);
   }
 
+  getSongs(){
+    return this.http.get(environment.url + '/charts');
+  }
+  
   getReviews(songId){
     // console.log("enter")
     // console.log('http://localhost:4000/reviews'+'?songId='+songId)

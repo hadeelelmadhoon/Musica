@@ -2,7 +2,7 @@
     <div>
         <br>
         <h3>Top Songs</h3>
-        <input type="text" [(ngModel)]="searchBox">
+        <input type="text" placeholder="search..." [(ngModel)]="searchBox">
         <mat-accordion *ngFor="let song of songs | filter:searchBox; let i = index">
             <mat-expansion-panel (opened)="fetchRecentReview(song._id); fetchRatings(song._id)">
                 <mat-expansion-panel-header>
@@ -35,6 +35,7 @@
             </mat-expansion-panel>
         </mat-accordion>
 
+        <button *ngIf="authService.loggedIn()" mat-raised-button color="primary" (click)="addSong()">Add New Song</button>
 
         <!-- <table mat-table [dataSource]="songs" class="back">
             <ng-container matColumnDef="title">
