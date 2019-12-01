@@ -80,6 +80,32 @@ exports.viewMusicCharts = function(req, res, next) {
     });
 };
 
+exports.viewSongs = function(req, res, next) {
+    Songs.find({}, (err, songs) => {
+        if (err)
+            console.log(err);
+        else {
+            res.json(songs)
+        }
+    });
+};
+
+exports.editHidden = function(req, res) {
+    Songs.findById(req.params.id, (err, song) => {
+        if (!song)
+            return next(new Error('Could not load song'));
+
+        else {
+            song.hidden = req.body.hidden;
+            song.save().then(song => {
+                res.json('Update done');
+            }).catch(err => {
+                res.status(400).send('Update failed');
+            });
+        }
+    })
+}
+
 exports.addSong = function(req, res) {
     let song = new Songs({
         title: req.body.title,

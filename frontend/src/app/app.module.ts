@@ -9,6 +9,7 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { MatCheckboxModule } from '@angular/Material'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,7 @@ import { NavbarComponent } from './components/navbar/navbar.component'
 import { ValidateService } from './services/validate.service'
 import { AuthService } from './services/auth.service';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { SongsComponent } from './components/songs/songs.component';
 
 const routes: Routes = [
   { path: 'reviews/add/:songId', component: AddReviewComponent },
@@ -42,6 +44,7 @@ const routes: Routes = [
   { path: 'reviews/:songId', component: ViewReviewsComponent },
   { path: 'users', component: ViewUsersComponent },
   { path: 'editUser/:id', component: EditUserComponent },
+  { path: 'songs', component: SongsComponent },
   { path: '', component: WelcomePageComponent }
 ];
 
@@ -60,7 +63,8 @@ const routes: Routes = [
     NoticeAndTakedownComponent,
     ProcedureComponent,
     NavbarComponent,
-    EditUserComponent
+    EditUserComponent,
+    SongsComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +88,8 @@ const routes: Routes = [
     MatSnackBarModule,
     CdkTableModule,
     MatExpansionModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatCheckboxModule
   ],
   providers: [ValidateService, AuthService],
   bootstrap: [AppComponent]

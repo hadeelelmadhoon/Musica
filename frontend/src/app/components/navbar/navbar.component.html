@@ -18,6 +18,9 @@
             <li *ngIf="authService.loggedIn() && authService.isManager()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
                 <a class="nav-link" [routerLink]="['/users']">Users Portal</a>
             </li>
+            <li *ngIf="authService.loggedIn() && authService.isManager()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+                <a class="nav-link" [routerLink]="['/songs']">Songs Portal</a>
+            </li>
             <li *ngIf="authService.loggedIn()" class="nav-item">
                 <a class="nav-link" (click)="onLogoutClick()">Logout</a>
             </li>

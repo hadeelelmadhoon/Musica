@@ -23,10 +23,11 @@ router.post('/authenticate', [
 
 router.get('/charts', items_controller.viewMusicCharts);
 
-router.post('/charts/add', [
-    check('track').trim().escape(),
-    check('year').trim().escape()
-], items_controller.addSong);
+router.post('/charts/add', items_controller.addSong);
+
+router.get('/songs', items_controller.viewSongs);
+
+router.post('/songs/edit/:id', items_controller.editHidden);
 
 router.get('/validate', items_controller.validate);
 
@@ -43,5 +44,6 @@ router.get('/users', items_controller.viewUsers);
 router.get('/users/:id', items_controller.getUsersById);
 
 router.post('/users/update/:id', items_controller.editUser);
+
 
 module.exports = router;

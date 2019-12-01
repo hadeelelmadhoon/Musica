@@ -96,6 +96,23 @@ export class AuthService {
     return this.http.get(environment.url + '/charts');
   }
 
+  getSongsAdmin(){
+    return this.http.get(environment.url + '/songs');
+  }
+
+  editHidden(id, title, artist, album, track, year, genre, hidden){
+    const song = {
+      title: title,
+      artist: artist, 
+      album: album, 
+      track: track, 
+      year: year, 
+      genre: genre,
+      hidden: !hidden
+    };
+    return this.http.post(environment.url + `/songs/edit/${id}`, song);
+  }
+
   addSong(title, artist, album, track, year, genre){
     const song = {
       title: title,
