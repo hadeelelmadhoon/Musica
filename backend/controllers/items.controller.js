@@ -11,7 +11,6 @@ exports.welcome = function(req, res) {
         password: req.body.password
     });
 
-    console.log(newUser.username)
     User.getUserByUsername(newUser.username, (err, user) => {
         if (err) {
             throw err;

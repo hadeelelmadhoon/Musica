@@ -3,6 +3,7 @@
 html,
 body {
     height: 100%;
+    background-image: linear-gradient(to right top, #02060c, #111422, #111424, #21253a, #303042);
 }
 
 body {

@@ -1,5 +1,4 @@
 body {
-    background-image: linear-gradient(to right top, #010711, #131c3f, #131c3f, #252f5a, #3e3d81);
     padding: 3%;
     padding-right: 7%;
     color: #f7f7f7;
@@ -7,11 +6,15 @@ body {
 }
 
 .loginForm {
-    background-image: linear-gradient(to left top, #040a20, #0e173a, #252f5a, #303964, #ad16a1);
+    background-color: rgba(0, 0, 0, 0.555);
     padding: 5%;
     height: 80%;
     border-radius: 3%;
     margin-top: 5%;
+}
+
+.title {
+    color: #f7f7f7;
 }
 
 .shadow {
@@ -25,7 +28,7 @@ body {
 }
 
 .box {
-    background-color: rgba(0, 0, 0, 0.37);
-    border-color: rgba(0, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(207, 207, 207, 0.411);
     color: #f7f7f7;
 }

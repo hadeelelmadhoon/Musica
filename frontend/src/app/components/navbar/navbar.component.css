@@ -1,5 +1,5 @@
 .navbar {
-    background-color: rgba(0, 0, 0, 0.377);
+    background-color: rgba(0, 0, 0, 0.555);
 }
 
 .items {
@@ -14,6 +14,9 @@
 .navbar-brand {
     position: relative;
     padding-left: 55px;
+    font-weight: bold;
+    color: #f7f7f7;
+    font-size: 25px;
 }
 
 .manager {

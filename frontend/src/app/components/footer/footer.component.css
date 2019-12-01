@@ -1,0 +1,58 @@
+body {
+    background-color: black;
+    background-image: none;
+    height: 130%;
+    color: #f7f7f7;
+}
+
+h6 {
+    font-weight: 400;
+    color: #acacac;
+    margin-bottom: 30px;
+}
+
+ul {
+    list-style: none;
+}
+
+.link {
+    position: relative;
+    left: -40px;
+}
+
+.link-item {
+    color: #f7f7f7;
+    font-size: 15px;
+}
+
+.title {
+    top: -7px;
+    left: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.foot {
+    padding: 40px;
+}
+
+.col {
+    margin: 0 auto;
+    float: none
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e933da;
+}
+
+.manager {
+    font-weight: 400;
+}

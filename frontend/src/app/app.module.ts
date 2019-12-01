@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule, MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule } from '@angular/material';
+import { MatToolbarModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, MatIconModule, MatButtonModule, MatCardModule, MatTableModule, MatDividerModule, MatSnackBarModule, MatCheckboxModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages'
 import { HttpClientModule } from '@angular/common/http'; 
@@ -9,7 +9,6 @@ import {CdkTableModule} from '@angular/cdk/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { MatCheckboxModule } from '@angular/Material'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +30,7 @@ import { ValidateService } from './services/validate.service'
 import { AuthService } from './services/auth.service';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { SongsComponent } from './components/songs/songs.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes: Routes = [
   { path: 'reviews/add/:songId', component: AddReviewComponent },
@@ -64,7 +64,8 @@ const routes: Routes = [
     ProcedureComponent,
     NavbarComponent,
     EditUserComponent,
-    SongsComponent
+    SongsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
