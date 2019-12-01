@@ -32,10 +32,12 @@ export class LoginPageComponent implements OnInit {
       if(json.success){
         this.authService.storeUserData(json.token, json.user);
         if(this.authService.isActive()){
+          this.authService.storeUserData(json.token, json.user);
           this.flashMessagesServices.show('Login successful', { cssClass: 'alert-success', timeout: 3000 });
           this.router.navigate(['/charts']);
         }
         else{
+          this.authService.logout();
           this.flashMessagesServices.show('Account deactivated, contact site manager', { cssClass: 'alert-danger', timeout: 3000 });
         }
       }
