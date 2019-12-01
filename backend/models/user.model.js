@@ -23,6 +23,10 @@ module.exports.getUserByUsername = function(username, callback) {
     User.findOne({ username: username }, callback);
 }
 
+module.exports.getUserByEmail = function(email, callback) {
+    User.findOne({ email: email }, callback);
+}
+
 module.exports.addUser = function(newUser, callback) {
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {

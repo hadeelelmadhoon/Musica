@@ -15,3 +15,9 @@
     position: relative;
     padding-left: 55px;
 }
+
+.manager {
+    font-size: 13px !important;
+    padding-left: 5px !important;
+    padding-top: 20px !important;
+}

@@ -11,11 +11,30 @@ exports.welcome = function(req, res) {
         password: req.body.password
     });
 
-    User.addUser(newUser, (err, user) => {
+    console.log(newUser.username)
+    User.getUserByUsername(newUser.username, (err, user) => {
         if (err) {
-            res.json({ success: false, msg: 'Failed to register user' })
+            throw err;
+        }
+        if (user) {
+            res.json({ success: false, msg: 'Username already exists' })
         } else {
-            res.json({ success: true, msg: 'User registered' })
+            User.getUserByEmail(newUser.email, (err, user) => {
+                if (err) {
+                    throw err;
+                }
+                if (user) {
+                    res.json({ success: false, msg: 'Email already exists' })
+                } else {
+                    User.addUser(newUser, (err, user) => {
+                        if (err) {
+                            res.json({ success: false, msg: 'Failed to register user' })
+                        } else {
+                            res.json({ success: true, msg: 'User registered' })
+                        }
+                    });
+                }
+            });
         }
     });
 };
