@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material';
+
+import { Policy } from '../../../../../backend/models/policies.model';
+import { AuthService } from '../../services/auth.service'
 
 @Component({
   selector: 'app-security-and-privacy',
@@ -7,9 +12,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SecurityAndPrivacyComponent implements OnInit {
 
-  constructor() { }
+  policy: Policy[];
+  displayedColumns = ['title', 'content'];
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    this.fetchPolicy();
+  }
+
+  fetchPolicy() {
+    this.authService
+      .getPolicy('privacy')
+      .subscribe((policy: Policy[]) => {
+        this.policy = policy;
+        console.log('Data requested ...');
+      });
   }
 
 }

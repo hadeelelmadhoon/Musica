@@ -140,4 +140,8 @@ export class AuthService {
     let status = JSON.parse(localStorage.getItem('user')).status;
     return(status == 'Active');
   }
+
+  getPolicy(type){
+    return this.http.get(environment.url + `/policy/${type}`);
+  }
 }

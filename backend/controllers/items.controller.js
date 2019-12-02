@@ -1,6 +1,7 @@
 const User = require('../models/user.model');
 const Songs = require('../models/songs.model');
 const Reviews = require('../models/reviews.model');
+const Policy = require('../models/policies.model');
 const jwt = require('jsonwebtoken');
 
 exports.welcome = function(req, res) {
@@ -246,3 +247,13 @@ exports.editUser = function(req, res) {
         }
     });
 }
+
+exports.viewPolicy = function(req, res, next) {
+    Policy.find({ type: req.params.type }, (err, policy) => {
+        if (err)
+            console.log(err);
+        else {
+            res.json(policy)
+        }
+    });
+};

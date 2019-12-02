@@ -61,5 +61,7 @@ router.post('/users/update/:id', items_controller.editUser);
 // route to verify email
 router.get('/verify/:email', items_controller.verify)
 
+// route to get policies 
+router.get('/policy/:type', items_controller.viewPolicy);
 
 module.exports = router;

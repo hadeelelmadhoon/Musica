@@ -1,41 +1,26 @@
 <body>
-    <h3>Security and Privacy Policy</h3>
+    <div>
+        <br>
+        <mat-card class="back">
+            <br><br>
+            <mat-divider></mat-divider>
+            <br>
+            <table mat-table [dataSource]="policy">
 
-    <h4>Introduction</h4>
-    <p>
-        This Notice describes Musica's privacy practices for information collected on this website. For simplicity, Musica may be referred to as “the website” in this Notice. Musica supports the right to privacy, including the rights of individuals to control
-        the dissemination and use of personal data that describes them. Musica is committed to protecting personal data of the users of our website, and utilizes technical and organization measures to protect your data. Musica supports and complies with
-        domestic and international laws and regulations that seek to protect the privacy rights of such individuals. This website, is owned and operated by Musica Corporation, 123 University Dr, G5L 6N3 London, Canada. Other websites subject to this Notice
-        may be owned and operated by an affiliate company which is under the control of Musica Corporation. From a data privacy perspective this means that Musica is data controller and data collector. Musica's Data Protection Officer can be reached at
-        johndoe@gmail.com.
-    </p>
-    <h4>Data Collection</h4>
-    <p>
-        When visiting our website, you are not required to provide any personal data. Musica relies on consent or other lawful principles established for data collection under applicable laws. Therefore, you have the option to abstain from providing personal
-        data when visiting publicly available portions of the website. However, when registering or in other circumstances, you may be required to provide some or all of the personal data listed below. If you have provided Musica with your personal data,
-        you have the rights described below in the Data Subject Rights section below. Musica collects additional non-personal data as described in the subsequent section of this Notice (Additional Data Collection Activities). Any data collected may be
-        used in Musica's business to provide you the products we offer and to aid in Musica's marketing efforts, and may result in you being contacted by Musica. In some cases, contact information may be required for Musica to create an account or to
-        otherwise communicate with you. This may include: providing songs or other requested information, making responses to inquiries, and distributions for marketing purposes. You may also be able to register for Musica services through the website.
-        For the purposes mentioned above, Musica may collect the following personal data about you: </p>
-    <ul>
-        <li>Full Name</li>
-        <li>Email</li>
-        <li>Personal Views (reviews and ratings)</li>
-    </ul>
-    <p>
-        To facilitate its marketing efforts, Musica may combine the personal data you provide with information that is not collected directly from you. Data not provided directly by you may be supplied by Musica's vendors that support its marketing efforts. Musica
-        uses automated processing within its internal systems to optimize its marketing activities. You may lodge a complaint with Musica regarding automated processing by submitting it to Musica using the contact information provided in the introduction
-        to this policy. We will retain your personal information as needed to fulfill the purposes for which it was collected. Personal data collected under this Notice is retained as long as you continue to interact with Musica or we have a legitimate
-        business interest to retain your data.
-    </p>
-    <h4>Data Subject Rights</h4>
-    <p>
-        You may request from Musica access to, correction of, blocking of and/or deletion of your personal data in line with applicable data protection law. You may also withdraw your consent for Musica to process your personal data.
-    </p>
-    <h4>Updates to this Privacy Notice</h4>
-    <p>
-        Musica may update this Privacy Notice from time to time. If we modify this Privacy Notice, we will post the revised version here. We may also provide notification of material changes by other means such as posting a notice on our website.
-    </p>
-    <p><strong>Revised: </strong>1 December 2019</p>
+                <ng-container matColumnDef="title">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element"><span class="title">{{element.title}}</span> <br> <span class="content">{{element.content}}</span> </td>
+                </ng-container>
 
+                <ng-container matColumnDef="content">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element"></td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </mat-card>
+        <button *ngIf="authService.loggedIn() && authService.isManager()" mat-raised-button color="primary" (click)="edit()">Edit</button>
+    </div>
 </body>

@@ -12,14 +12,3 @@ let ReviewsSchema = new Schema({
 
 // Export the model
 const Reviews = module.exports = mongoose.model('Reviews', ReviewsSchema);
-
-// module.exports.getReviewsBySongId = function(songId, callback) {
-//     Reviews.find({ songId: songId }, (err, reviews) => {
-//         if (err)
-//             console.log(err);
-//         else {
-//             console.log(songId)
-//             console.log(reviews)
-//         }
-//     });
-// }

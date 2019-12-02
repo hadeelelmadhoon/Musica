@@ -1,20 +1,51 @@
 body {
-    height: 130%;
+    height: 130vh;
     background-color: #f7f7f7;
     background-image: none;
-    padding-top: 120px;
     padding-left: 80px;
     padding-right: 80px;
     padding-bottom: 60px;
 }
 
-h3 {
+.title {
+    font-size: 25px;
     font-weight: bold;
-    color: black;
-    margin-bottom: 20px;
 }
 
-h4 {
-    color: rgb(68, 68, 68);
-    margin-bottom: 20px;
+.content {
+    position: relative;
+    top: 30px;
+}
+
+table {
+    width: 100%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.back {
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: none;
+    margin-bottom: 50px;
+}
+
+.mat-column-right {
+    text-align: center;
+}
+
+td.mat-cell {
+    border: none;
+    font-size: 15px;
+}
+
+th.mat-header-cell {
+    margin-top: 0;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+ ::ng-deep .mat-card {
+    border: rgba(0, 0, 0, 0) !important;
+    box-shadow: none;
 }

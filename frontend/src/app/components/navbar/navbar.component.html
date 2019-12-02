@@ -7,9 +7,6 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ml-auto items">
-            <!-- <li *ngIf="authService.loggedIn() && authService.isManager()">
-                <a class="navbar-brand" href="#">Manager Access</a>
-            </li> -->
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
                 <a class="nav-link" [routerLink]="['/charts']">Music Charts</a>
             </li>
