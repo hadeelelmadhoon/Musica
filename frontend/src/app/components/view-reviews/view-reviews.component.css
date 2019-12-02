@@ -1,8 +1,40 @@
 body {
     height: 100vh;
-    padding: 50px 5% 15% 5%;
+    padding: 80px 5% 15% 5%;
+    color: #f7f7f7;
 }
 
 table {
     width: 100%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.back {
+    background-color: rgba(255, 255, 255, 0);
+    color: #f7f7f7;
+    box-shadow: none;
+}
+
+.mat-column-right {
+    text-align: center;
+}
+
+td.mat-cell {
+    border: none;
+    color: #f7f7f7;
+    font-size: 15px;
+}
+
+th.mat-header-cell {
+    margin-top: 0;
+    border: none;
+    color: #f7f7f7;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+ ::ng-deep .mat-card {
+    border: rgba(0, 0, 0, 0) !important;
+    box-shadow: none;
 }

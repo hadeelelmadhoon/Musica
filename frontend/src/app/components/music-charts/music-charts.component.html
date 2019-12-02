@@ -2,14 +2,14 @@
     <div>
         <br>
         <h3>Top Songs</h3>
-        <input type="text" placeholder="search..." [(ngModel)]="searchBox">
+        <input type="text" placeholder="search..." [(ngModel)]="searchBox" class="search">
         <mat-accordion *ngFor="let song of songs | filter:searchBox; let i = index">
-            <mat-expansion-panel (opened)="fetchRecentReview(song._id); fetchRatings(song._id)">
+            <mat-expansion-panel (opened)="fetchRecentReview(song._id); fetchRatings(song._id)" class="back">
                 <mat-expansion-panel-header>
-                    <mat-panel-title>
+                    <mat-panel-title class="title">
                         {{i + 1}}
                     </mat-panel-title>
-                    <mat-panel-description>
+                    <mat-panel-description class="title">
                         <b>{{ song.title }}</b>
                     </mat-panel-description>
                 </mat-expansion-panel-header>
@@ -32,37 +32,11 @@
                         <p>{{ review.review }}</p>
                     </li>
                 </ul>
-                <button class="view-reviews" (click)="getReviews(song._id)">See all reviews</button>
+                <button class="view-reviews" class="btn btn-light btn-sm" (click)="getReviews(song._id)">See all reviews</button>
             </mat-expansion-panel>
         </mat-accordion>
 
         <button *ngIf="authService.loggedIn()" mat-raised-button color="primary" (click)="addSong()">Add New Song</button>
 
-        <!-- <table mat-table [dataSource]="songs" class="back">
-            <ng-container matColumnDef="title">
-                <th mat-header-cell *matHeaderCellDef></th>
-                <td *matCellDef="let element"> <span class="title">{{element.title}}</span><br><span class="artist">{{element.artist}}</span> </td>
-            </ng-container>
-
-            <ng-container matColumnDef="artist">
-                <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let element"></td>
-            </ng-container>
-
-            <ng-container matColumnDef="rating">
-                <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let element" class="rating"> {{element.rating}}
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
-                         <i class="fas fa-angle-right expand"></i> 
-        <a class="view-reviews" (click)="getReviews(element._id)">See all</a>
-        </li>
-        </td>
-
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-        </table> -->
     </div>
 </body>

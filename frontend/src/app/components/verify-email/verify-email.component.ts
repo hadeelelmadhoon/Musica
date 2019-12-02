@@ -19,10 +19,13 @@ export class VerifyEmailComponent implements OnInit {
   ngOnInit() {
   }
 
+  // verify function that is connected to button
   verify(){
+    // get verify user from authService
     this.authService.verifyUser(this.email).subscribe(data => {
       var json = JSON.parse(JSON.stringify(data));
       if(json.success){
+        // if succesful, route to login
         this.flashMessagesServices.show(json.msg, { cssClass: 'alert-success', timeout: 3000 });
         this.router.navigate(['/login']);
       }
