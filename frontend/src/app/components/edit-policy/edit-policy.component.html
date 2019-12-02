@@ -1,0 +1,23 @@
+<body>
+    <div>
+        <br>
+        <mat-card>
+            <section class="mat-typography">
+                <h3>Edit Policy</h3>
+            </section>
+            <mat-divider></mat-divider>
+            <br>
+            <form [formGroup]="updateForm" class="edit-form">
+                <mat-form-field class="field-full-width">
+                    <input placeholder="Title" matInput formControlName="title" #title>
+                </mat-form-field>
+                <mat-form-field class="field-full-width">
+                    <input placeholder="Content" matInput formControlName="content" #content>
+                </mat-form-field>
+                <mat-divider></mat-divider>
+                <br><br>
+                <button type="submit" (click)="updatePolicy(title.value, content.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Save</button>
+            </form>
+        </mat-card>
+    </div>
+</body>

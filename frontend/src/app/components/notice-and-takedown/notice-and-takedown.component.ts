@@ -30,5 +30,10 @@ export class NoticeAndTakedownComponent implements OnInit {
       });
   }
 
+  edit(type){
+    console.log(type);
+    this.router.navigate([`/policy/update/${type}`]);
+  }
+
 }
 

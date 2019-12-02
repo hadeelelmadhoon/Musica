@@ -32,6 +32,7 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { SongsComponent } from './components/songs/songs.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { EditPolicyComponent } from './components/edit-policy/edit-policy.component';
 
 const routes: Routes = [
   { path: 'reviews/add/:songId', component: AddReviewComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'notice', component: NoticeAndTakedownComponent},
   { path: 'procedure', component: ProcedureComponent },
   { path: 'privacy', component: SecurityAndPrivacyComponent },
+  { path: 'policy/update/:type', component: EditPolicyComponent },
   { path: 'reviews/:songId', component: ViewReviewsComponent },
   { path: 'users', component: ViewUsersComponent },
   { path: 'editUser/:id', component: EditUserComponent },
@@ -68,7 +70,8 @@ const routes: Routes = [
     EditUserComponent,
     SongsComponent,
     FooterComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    EditPolicyComponent
   ],
   imports: [
     BrowserModule,

@@ -49,3 +49,9 @@ th.mat-header-cell {
     border: rgba(0, 0, 0, 0) !important;
     box-shadow: none;
 }
+
+.button {
+    position: absolute;
+    left: 0px;
+    top: 90px;
+}

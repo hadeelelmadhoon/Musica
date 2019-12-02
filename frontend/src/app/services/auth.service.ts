@@ -144,4 +144,14 @@ export class AuthService {
   getPolicy(type){
     return this.http.get(environment.url + `/policy/${type}`);
   }
+
+  editPolicy(type, title, content){
+    console.log(type);
+    const policy = {
+      type: type,
+      title: title,
+      content: content
+    };
+    return this.http.post(environment.url + `/policy/update/${type}`, policy);
+  }
 }

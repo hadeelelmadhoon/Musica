@@ -257,3 +257,21 @@ exports.viewPolicy = function(req, res, next) {
         }
     });
 };
+
+exports.editPolicy = function(req, res) {
+    console.log(req.params.type)
+    Policy.findOne({ type: req.params.type }, (err, policy) => {
+        if (!policy)
+            return next(new Error('Could not load user'));
+        else {
+            policy.title = req.body.title;
+            policy.content = req.body.content;
+
+            policy.save().then(policy => {
+                res.json('Update done');
+            }).catch(err => {
+                res.status(400).send('Update failed');
+            });
+        }
+    });
+}
