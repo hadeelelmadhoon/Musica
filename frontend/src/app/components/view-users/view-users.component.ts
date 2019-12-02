@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth.service'
 export class ViewUsersComponent implements OnInit {
 
   users: Users[];
-  displayedColumns = ['name', 'email', 'username', 'status', 'authority', 'actions'];
+  displayedColumns = ['name', 'email', 'username', 'status', 'authority', 'verified', 'actions'];
 
   constructor(private authService: AuthService, private router: Router) { }
 

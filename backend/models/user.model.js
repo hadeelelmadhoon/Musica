@@ -9,7 +9,8 @@ let UserSchema = new Schema({
     username: { type: String, required: true },
     password: { type: String, required: true },
     status: { type: String, default: "Active" },
-    authority: { type: String, default: "User" }
+    authority: { type: String, default: "User" },
+    verified: { type: Boolean, default: false }
 }, { collection: 'Users' });
 
 // Export the model

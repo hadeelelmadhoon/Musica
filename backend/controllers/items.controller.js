@@ -54,7 +54,10 @@ exports.authenticate = function(req, res) {
             if (err) {
                 throw err;
             }
-            if (isMatch) {
+            if (user.verified == false) {
+                return res.json({ success: false, msg: 'Not verified' });
+            } else if (isMatch) {
+
                 const token = jwt.sign(user.toJSON(), 'secret', {
                     expiresIn: 604800 // 1 week
                 });
@@ -82,6 +85,21 @@ exports.authenticate = function(req, res) {
 exports.validate = function(req, res) {
     res.send('validate');
 };
+
+exports.verify = function(req, res) {
+    User.getUserByEmail(req.params.email, (err, user) => {
+        if (!user)
+            return next(new Error('Could not load user'));
+        else {
+            user.verified = true;
+            user.save().then(user => {
+                res.json({ success: true, msg: 'Email verified, please login' })
+            }).catch(err => {
+                res.json({ success: false, msg: 'Failed to verify email' })
+            });
+        }
+    })
+}
 
 exports.viewMusicCharts = function(req, res, next) {
     Songs.find({ hidden: false }, null, {

@@ -32,6 +32,7 @@ export class EditUserComponent implements OnInit {
         this.updateForm.get('username').setValue(this.user.username);
         this.updateForm.get('status').setValue(this.user.status);
         this.updateForm.get('authority').setValue(this.user.authority);
+        this.updateForm.get('verified').setValue(this.user.verified);
       });
     });
   }
@@ -42,12 +43,13 @@ export class EditUserComponent implements OnInit {
       email: new FormControl({value: '', disabled: true}),
       username: new FormControl({value: '', disabled: true}),
       status: '',
-      authority: ''
+      authority: '',
+      verified: new FormControl({value: '', disabled: true})
     });
   }
 
-  updateUser(name, email, username, status, authority) {
-    this.authService.editUser(this.id, name, email, username, status, authority).subscribe(() => {
+  updateUser(name, email, username, status, authority, verified) {
+    this.authService.editUser(this.id, name, email, username, status, authority, verified).subscribe(() => {
       this.snackBar.open('Issue updated successfully', 'OK', {
         duration: 3000,
       });

@@ -43,6 +43,9 @@ export class LoginPageComponent implements OnInit {
       }
       else{
         this.flashMessagesServices.show(json.msg, { cssClass: 'alert-danger', timeout: 3000 });
+        if(json.msg == 'Not verified'){
+          this.router.navigate(['/verify']);
+        }
       }
     });
   }

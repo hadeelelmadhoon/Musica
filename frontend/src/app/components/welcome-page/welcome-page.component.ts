@@ -54,8 +54,8 @@ export class WelcomePageComponent implements OnInit {
     this.authService.registerUser(user).subscribe(data => {
       var json = JSON.parse(JSON.stringify(data));
       if(json.success){
-        this.flashMessagesServices.show('You are now registered and can login!', { cssClass: 'alert-success', timeout: 3000 });
-        this.router.navigate(['/login']);
+        this.flashMessagesServices.show('You are now registered! Please verify your email.', { cssClass: 'alert-success', timeout: 3000 });
+        this.router.navigate(['/verify']);
       }
       else{
         this.flashMessagesServices.show(json.msg, { cssClass: 'alert-danger', timeout: 3000 });

@@ -45,5 +45,7 @@ router.get('/users/:id', items_controller.getUsersById);
 
 router.post('/users/update/:id', items_controller.editUser);
 
+router.get('/verify/:email', items_controller.verify)
+
 
 module.exports = router;

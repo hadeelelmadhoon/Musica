@@ -1,5 +1,6 @@
 body {
-    padding-top: 50px;
+    height: 100vh;
+    padding: 50px 5% 15% 5%;
 }
 
 table {

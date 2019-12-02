@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Http, Headers } from'@angular/http';
-// import { BehaviorSubject, Observable } from 'rxjs';
-// import { map } from 'rxjs/operators';
 import { tokenNotExpired } from 'angular2-jwt'
 import { environment } from 'src/environments/environment';
 
@@ -32,30 +30,22 @@ export class AuthService {
     return this.http.get(environment.url + `/users/${id}`);
   }
 
-  editUser(id, name, email, username, status, authority) {
+  verifyUser(email){
+    console.log(email);
+    return this.http.get(environment.url + `/verify/${email}`);
+  } 
+
+  editUser(id, name, email, username, status, authority, verified) {
     const user = { 
       name: name,
       email: email,
       username: username,
       status: status,
-      authority: authority
+      authority: authority,
+      verified: verified
     };
     return this.http.post(environment.url + `/users/update/${id}`, user);
   }
-
-  // getAddReview(){
-  //   this.loadToken();
-  //   // const headers = new HttpHeaders();
-  //   // headers.append('Authorization', 'this.authToken');
-  //   // headers.append('Content-Type',  'application/json');
-  //   const headers = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type':  'application/json',
-  //       'Authorization': this.authToken
-  //     })
-  //   };
-  //   return this.http.get('http://localhost:4000/reviews/add/:songId', headers);
-  // }
 
   storeUserData(token, user){
     localStorage.setItem('id_token', token);

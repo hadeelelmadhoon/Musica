@@ -31,6 +31,7 @@ import { AuthService } from './services/auth.service';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { SongsComponent } from './components/songs/songs.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 const routes: Routes = [
   { path: 'reviews/add/:songId', component: AddReviewComponent },
@@ -45,6 +46,7 @@ const routes: Routes = [
   { path: 'users', component: ViewUsersComponent },
   { path: 'editUser/:id', component: EditUserComponent },
   { path: 'songs', component: SongsComponent },
+  { path: 'verify', component: VerifyEmailComponent},
   { path: '', component: WelcomePageComponent }
 ];
 
@@ -65,7 +67,8 @@ const routes: Routes = [
     NavbarComponent,
     EditUserComponent,
     SongsComponent,
-    FooterComponent
+    FooterComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
